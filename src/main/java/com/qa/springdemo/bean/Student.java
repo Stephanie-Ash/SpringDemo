@@ -1,5 +1,10 @@
 package com.qa.springdemo.bean;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
 	private int id;
 	private String firstName;
@@ -8,10 +13,17 @@ public class Student {
 	private String email;
 	private String subject;
 	private Double fees;
+	private Address address;
 	
 	public Student() {
 		System.out.println("Default constructor called...");
 		
+	}
+	
+	@Autowired
+	public Student(@Qualifier("homeAddress") Address address) {
+		System.out.println("Address constructor called...");
+		this.address = address;
 	}
 
 	public Student(int id, String firstName, String surname, int age, String email, String subject, Double fees) {
@@ -80,19 +92,27 @@ public class Student {
 	public void setFees(Double fees) {
 		this.fees = fees;
 	}
-	
-	public void setup() {
-		System.out.println("Do some important setup");
+
+	public Address getAddress() {
+		return address;
 	}
-	
-	public void closeDown() {
-		System.out.println("Do some important closing");
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", firstName=" + firstName + ", surname=" + surname + ", age=" + age + ", email="
-				+ email + ", subject=" + subject + ", fees=" + fees + "]";
+				+ email + ", subject=" + subject + ", fees=" + fees + ", address=" + address + "]";
 	}
+	
+//	public void setup() {
+//	System.out.println("Do some important setup");
+//}
+//
+//public void closeDown() {
+//	System.out.println("Do some important closing");
+//}
 
 }

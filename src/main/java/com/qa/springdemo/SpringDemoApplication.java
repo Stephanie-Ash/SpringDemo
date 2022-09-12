@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.qa.springdemo.bean.Address;
 import com.qa.springdemo.bean.Student;
 
 @SpringBootApplication
@@ -21,15 +22,22 @@ public class SpringDemoApplication {
 		String greeting = context.getBean("greeting", String.class);
 		String farewell = context.getBean("farewell", String.class);
 		
-		Student john = context.getBean("john", Student.class);
-		Student jane = context.getBean("jane", Student.class);
-		Student janeTwo = context.getBean("jane", Student.class);
+//		Student john = context.getBean("john", Student.class);
+//		Student jane = context.getBean("jane", Student.class);
+//		Student janeTwo = context.getBean("jane", Student.class);
 		
-		System.out.println(john);
-		System.out.println(jane);
-		System.out.println(janeTwo);
-		System.out.println(jane == janeTwo);
+		Address homeAddress = context.getBean("homeAddress", Address.class);
+		Address officeAddress = context.getBean("officeAddress", Address.class);
+		Student studentOne = context.getBean(Student.class);
 		
+		System.out.println(homeAddress);
+		System.out.println(officeAddress);
+		System.out.println(studentOne);
+		
+//		System.out.println(john);
+//		System.out.println(jane);
+//		System.out.println(janeTwo);
+//		System.out.println(jane == janeTwo);
 
 	}
 	
